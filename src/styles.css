@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 10px 25% 0 25%;
+  font-family: 'Trebuchet MS', sans-serif;
+  background: yellow;
+  color: blue;
+}
+
+form span {
+  padding: 5px;
+}
+
+input {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+input.ng-touched.ng-valid {
+  border-color: green;
+  background-color: lightgreen;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: red;
+  background-color: #ffdbe0;
+}
+
+.errormessage {
+  color: red
+}
+

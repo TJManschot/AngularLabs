@@ -1,1 +1,46 @@
-<div class="jumbotron">Hello {{name}}</div>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>E-mail address</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let contact of contacts">
+    <td>{{contact | contactName}}</td>
+    <td>{{contact.email}}</td>
+    <td>
+      <button class="btn">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<form (ngSubmit)="addContact()" #addContactForm="ngForm">
+  <span>
+    <label for="inputFirstName"></label>
+   <input type="text" [(ngModel)]="newContact.firstName" #firstName="ngModel" name="firstName"
+          id="inputFirstName" class="form-control" required>
+  </span>
+  <span>
+    <label for="inputSurname"></label>
+    <input type="text" [(ngModel)]="newContact.surname" #surname="ngModel" name="surname"
+           id="inputSurname" class="form-control"  required>
+  </span>
+  <span>
+    <label for="inputEmail"></label>
+    <input type="text"
+           required
+           pattern = ".+@.+\..+"
+           [(ngModel)]="newContact.email"
+           #email = "ngModel"
+           name="email"
+           id="inputEmail"
+           class="form-control">
+  </span>
+
+  <div *ngIf="firstName.errors?.required" class="errormessage">Enter your first name</div>
+  <div *ngIf="surname.errors?.required" class="errormessage">Enter your surname</div>
+  <div *ngIf="email.errors?.required" class="errormessage">Enter your e-mail address</div>
+  <div *ngIf="email.errors?.pattern" class="errormessage">Your e-mail address is invalid</div>
+
+  <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
+</form>
