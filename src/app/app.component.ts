@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
 import {Contact} from './models/contact';
+import {ContactService} from './services/contact.service';
 
 @Component({
   selector: 'app-root',
@@ -9,31 +9,11 @@ import {Contact} from './models/contact';
 })
 
 export class AppComponent {
-  firstName = new FormControl('', Validators.required);
-  surname = new FormControl('', Validators.required);
-  email = new FormControl('', [Validators.required, Validators.pattern('^.+@.+\.[a-z]$')]);
-
-  addContactForm = new FormGroup({
-    firstName: this.firstName,
-    surname: this.surname,
-    email: this.email
-  });
-
-  contacts: Contact[] = [
-    {firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com'},
-    {firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com'},
-    {firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk'}
-  ];
-
-  addContact(): void {
-    this.contacts.push(this.addContactForm.value);
-    this.addContactForm.reset();
+  constructor(private contactService: ContactService) {}
+  getContacts(): Contact[] {
+    return this.contactService.getContacts();
   }
-  checkRequired(formControl: FormControl): boolean {
-    return formControl.errors?.required;
-  }
-  checkPattern(formControl: FormControl): boolean {
-    return formControl.errors?.pattern;
+  addContact(contact: Contact): void {
+    this.contactService.add(contact);
   }
 }
-

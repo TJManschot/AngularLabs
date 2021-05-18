@@ -1,0 +1,25 @@
+<form (ngSubmit)="addContact()" [formGroup]="addContactForm">
+  <span>
+    <label for="inputFirstName"></label>
+   <input type="text" name="firstName" formControlName="firstName"
+          id="inputFirstName">
+  </span>
+  <span>
+    <label for="inputSurname"></label>
+    <input type="text" name="surname" formControlName="surname"
+           id="inputSurname">
+  </span>
+  <span>
+    <label for="inputEmail"></label>
+    <input type="text" name="email" formControlName="email"
+           id="inputEmail">
+  </span>
+
+  <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
+
+  <div *ngIf="checkRequired(firstName)" class="errormessage">Enter your first name</div>
+  <div *ngIf="checkRequired(surname)" class="errormessage">Enter your surname</div>
+  <div *ngIf="checkRequired(email)" class="errormessage">Enter your e-mail address</div>
+  <div *ngIf="checkPattern(email)" class="errormessage">Your e-mail address is invalid</div>
+
+</form>

@@ -1,0 +1,22 @@
+form span {
+  padding: 5px;
+}
+
+input {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+input.ng-touched.ng-valid {
+  border-color: green;
+  background-color: lightgreen;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: red;
+  background-color: lightpink;
+}
+
+.errormessage {
+  padding: 0 0 0 5px;
+}

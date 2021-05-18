@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ContactNamePipe} from './pipes/contact-name.pipe';
+import {ContactFormComponent} from './components/contact-form/contact-form.component';
+import {ContactListComponent} from './components/contact-list/contact-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ContactListComponent,
+    ContactFormComponent,
     ContactNamePipe
   ],
   imports: [
