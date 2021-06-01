@@ -1,6 +1,6 @@
-import {Component, Output, EventEmitter } from '@angular/core';
-import {Contact} from '../../models/contact';
+import {Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ContactService} from '../../services/contact/contact.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -8,20 +8,18 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./contact-form.component.css']
 })
 
-export class ContactFormComponent{
-  @Output() add = new EventEmitter<Contact>();
+export class ContactFormComponent {
+  name = new FormControl('', Validators.required);
+  age = new FormControl('', Validators.required);
 
-  firstName = new FormControl('', Validators.required);
-  surname = new FormControl('', Validators.required);
-  email = new FormControl('', [Validators.required, Validators.pattern('^.+@.+\.[a-z]+$')]);
-
+  constructor(private contactService: ContactService) {
+  }
   addContactForm = new FormGroup({
-    firstName: this.firstName,
-    surname: this.surname,
-    email: this.email
+    name: this.name,
+    age: this.age
   });
   addContact(): void {
-    this.add.emit(this.addContactForm.value);
+    this.contactService.add(this.addContactForm.value);
     this.addContactForm.reset();
   }
   checkRequired(formControl: FormControl): boolean {

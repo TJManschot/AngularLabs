@@ -1,5 +1,6 @@
-import {Component, Input } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Contact} from '../../models/contact';
+import {ContactService} from '../../services/contact/contact.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -7,6 +8,11 @@ import {Contact} from '../../models/contact';
   styleUrls: ['./contact-list.component.css']
 })
 
-export class ContactListComponent {
-  @Input() contacts: Contact[] = [];
+export class ContactListComponent implements OnInit {
+  contacts: Contact[] = [];
+  constructor(private contactService: ContactService) {
+  }
+  ngOnInit(): void {
+    this.contacts = this.contactService.getContacts();
+  }
 }

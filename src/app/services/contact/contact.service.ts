@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Contact} from '../models/contact';
+import {Contact} from '../../models/contact';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
   contacts: Contact[] = [
-    {firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com'},
-    {firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com'},
-    {firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk'}
+    {name: 'Sam Smith', age: 12},
+    {name: 'Frank Muscles', age: 34},
+    {name: 'Eddy Valentino', age: 56}
   ];
   getContacts(): Contact[] {
     return this.contacts;

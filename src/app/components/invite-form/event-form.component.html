@@ -1,0 +1,25 @@
+<form (ngSubmit)="addEvent()" [formGroup]="addEventForm">
+  <span>
+    <label for="inputEvent"></label>
+    <input type="text" name="event" formControlName="event"
+          id="inputEvent" placeholder=" event name ...">
+  </span>
+
+  <span>
+    <label for="inputDate"></label>
+    <input type="date" name="date" formControlName="date"
+          id="inputDate" placeholder=" date ...">
+  </span>
+
+  <table class="table">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+    <tr *ngFor="let contact of contacts">
+      <app-invite-contacts-form [contact] = contact></app-invite-contacts-form>
+    </tr>
+  </table>
+  <button class="button btn-primary" [disabled]="!addEventForm.valid">Event</button>
+</form>

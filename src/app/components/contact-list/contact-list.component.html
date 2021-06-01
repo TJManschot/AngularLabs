@@ -1,15 +1,15 @@
 <table class="table">
   <tr>
     <th>Name</th>
-    <th>E-mail address</th>
+    <th>Age</th>
     <th></th>
   </tr>
   <tr *ngFor="let contact of contacts">
-    <td>{{contact | contactName}}</td>
-    <td>{{contact.email}}</td>
+    <td>{{contact.name}}</td>
+    <td>{{contact.age}}</td>
     <td>
-      <button class="btn">Edit</button>
-      <button class="btn btn-danger">Delete</button>
+      <button class="button">Edit</button>
+      <button class="button btn-danger">Delete</button>
     </td>
   </tr>
 </table>

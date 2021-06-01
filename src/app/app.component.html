@@ -1,2 +1,6 @@
-<app-contact-list [contacts] = getContacts()></app-contact-list>
-<app-contact-form (add)="addContact($event)"></app-contact-form>
+<nav class="container">
+  <div ><a routerLink="/home" class="child" routerLinkActive="active">Home</a></div>
+  <div ><a routerLink="/invite" class="child" routerLinkActive="active">Event</a></div>
+</nav>
+
+<router-outlet></router-outlet>
